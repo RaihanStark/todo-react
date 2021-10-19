@@ -8,6 +8,10 @@ const StyledTask = styled.div`
   align-items: center;
 `;
 
+const StyledTaskAction = styled.div`
+  margin-left: auto;
+`;
+
 const Title = styled.span`
   margin-left: 0.5rem;
 
@@ -31,6 +35,9 @@ function Task({ title, checked = false }) {
       <StyledTask>
         <Checkbox checked={checkedState} onClick={checkHandler} />
         <Title checked={checkedState}>{title}</Title>
+        {/* <StyledTaskAction>
+          <i class="fas fa-trash"></i>
+        </StyledTaskAction> */}
       </StyledTask>
     </Card>
   );
