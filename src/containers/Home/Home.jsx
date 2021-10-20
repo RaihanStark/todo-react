@@ -3,6 +3,8 @@ import Task from "../../components/Task/Task";
 import Container from "../../components/Container/Container";
 import TaskList from "../TaskList/TaskList";
 import BottomNavigation from "../BottomNavigation/BottomNavigation";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleTask } from "../../redux";
 
 const StyledHome = styled.div`
   background-color: #f4f7fd;
@@ -14,14 +16,24 @@ const StyledSectionTitle = styled.h2`
 `;
 
 function Home() {
+  const tasks = useSelector((state) => state.tasks);
+  const dispatch = useDispatch();
+
   return (
     <StyledHome>
       <Container>
         <StyledSectionTitle>Tasks</StyledSectionTitle>
         <TaskList>
-          <Task title="Do a little jump for 3 minutes" checked></Task>
-          <Task title="Do a little jump for 3 minutes"></Task>
-          <Task title="Do a little jump for 3 minutes"></Task>
+          {tasks.map((task) => {
+            return (
+              <Task
+                key={task.id}
+                title={task.title}
+                checked={task.isChecked}
+                onChange={() => dispatch(toggleTask(task.id))}
+              ></Task>
+            );
+          })}
         </TaskList>
       </Container>
       <BottomNavigation />

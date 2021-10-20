@@ -23,18 +23,12 @@ const Title = styled.span`
     `};
 `;
 
-function Task({ title, checked = false }) {
-  const [checkedState, setcheckedState] = useState(checked);
-
-  function checkHandler() {
-    setcheckedState(!checkedState);
-  }
-
+function Task({ title, checked = false, onChange }) {
   return (
     <Card>
       <StyledTask>
-        <Checkbox checked={checkedState} onClick={checkHandler} />
-        <Title checked={checkedState}>{title}</Title>
+        <Checkbox checked={checked} onChange={onChange} />
+        <Title checked={checked}>{title}</Title>
         {/* <StyledTaskAction>
           <i class="fas fa-trash"></i>
         </StyledTaskAction> */}
