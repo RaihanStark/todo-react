@@ -27,9 +27,18 @@ const taskReducer = (state = initialState, actions) => {
       return state;
 
     case TOGGLE_TASK:
-      let tasks = state.tasks;
-      tasks[actions.payload].isChecked = !tasks[actions.payload].isChecked;
-      return { ...state, tasks: [...tasks] };
+      let toggled = state.tasks.map((task) => {
+        if (task.id === actions.payload) {
+          task.isChecked = !task.isChecked;
+          return task;
+        }
+
+        return task;
+      });
+
+      console.log(toggled);
+
+      return { ...state, tasks: toggled };
 
     case DELETE_TASK:
       return {
