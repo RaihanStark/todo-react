@@ -1,4 +1,4 @@
-import { ADD_TASK, TOGGLE_TASK } from "./taskTypes";
+import { ADD_TASK, TOGGLE_TASK, DELETE_TASK } from "./taskTypes";
 
 const initialState = {
   tasks: [
@@ -29,9 +29,17 @@ const taskReducer = (state = initialState, actions) => {
     case TOGGLE_TASK:
       let tasks = state.tasks;
       tasks[actions.payload].isChecked = !tasks[actions.payload].isChecked;
-      console.log(tasks);
       return { ...state, tasks: [...tasks] };
 
+    case DELETE_TASK:
+      return {
+        ...state,
+        tasks: [
+          ...state.tasks.filter((task) => {
+            return task.id != actions.payload;
+          }),
+        ],
+      };
     default:
       return state;
   }

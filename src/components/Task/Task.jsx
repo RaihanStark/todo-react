@@ -8,9 +8,12 @@ const StyledTask = styled.div`
   align-items: center;
 `;
 
-// const StyledTaskAction = styled.div`
-//   margin-left: auto;
-// `;
+const StyledTaskAction = styled.div`
+  margin-left: auto;
+  color: #e05b5b;
+
+  cursor: pointer;
+`;
 
 const Title = styled.span`
   margin-left: 0.5rem;
@@ -23,15 +26,15 @@ const Title = styled.span`
     `};
 `;
 
-function Task({ title, checked = false, onChange }) {
+function Task({ title, checked = false, onChange, onDelete }) {
   return (
-    <Card>
+    <Card whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
       <StyledTask>
         <Checkbox checked={checked} onChange={onChange} />
         <Title checked={checked}>{title}</Title>
-        {/* <StyledTaskAction>
+        <StyledTaskAction onClick={onDelete}>
           <i class="fas fa-trash"></i>
-        </StyledTaskAction> */}
+        </StyledTaskAction>
       </StyledTask>
     </Card>
   );

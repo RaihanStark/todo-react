@@ -4,7 +4,7 @@ import Container from "../../components/Container/Container";
 import TaskList from "../TaskList/TaskList";
 import BottomNavigation from "../BottomNavigation/BottomNavigation";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleTask } from "../../redux";
+import { toggleTask, deleteTask } from "../../redux";
 
 const StyledHome = styled.div`
   background-color: #f4f7fd;
@@ -31,6 +31,7 @@ function Home() {
                 title={task.title}
                 checked={task.isChecked}
                 onChange={() => dispatch(toggleTask(task.id))}
+                onDelete={() => dispatch(deleteTask(task.id))}
               ></Task>
             );
           })}
