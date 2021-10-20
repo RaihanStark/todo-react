@@ -8,9 +8,9 @@ const StyledTask = styled.div`
   align-items: center;
 `;
 
-const StyledTaskAction = styled.div`
-  margin-left: auto;
-`;
+// const StyledTaskAction = styled.div`
+//   margin-left: auto;
+// `;
 
 const Title = styled.span`
   margin-left: 0.5rem;
