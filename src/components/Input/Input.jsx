@@ -12,8 +12,15 @@ const StyledInput = styled.input`
   }
 `;
 
-function Input({ placeholder }) {
-  return <StyledInput type="text" placeholder={placeholder} />;
+function Input({ placeholder, value, onChange }) {
+  return (
+    <StyledInput
+      type="text"
+      placeholder={placeholder}
+      value={value}
+      onChange={onChange}
+    />
+  );
 }
 
 export default Input;

@@ -16,9 +16,13 @@ const Styledbutton = styled(motion.button)`
   cursor: pointer;
 `;
 
-function Button({ children }) {
+function Button({ children, onClick }) {
   return (
-    <Styledbutton whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+    <Styledbutton
+      onClick={onClick}
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
+    >
       {children}
     </Styledbutton>
   );

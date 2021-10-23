@@ -24,7 +24,17 @@ const taskReducer = (state = initialState, actions) => {
   switch (actions.type) {
     case ADD_TASK:
       console.log(actions.type, actions.payload);
-      return state;
+      return {
+        ...state,
+        tasks: [
+          ...state.tasks,
+          {
+            id: state.tasks.length,
+            title: actions.payload,
+            isChecked: false,
+          },
+        ],
+      };
 
     case TOGGLE_TASK:
       let toggled = state.tasks.map((task) => {
@@ -35,9 +45,6 @@ const taskReducer = (state = initialState, actions) => {
 
         return task;
       });
-
-      console.log(toggled);
-
       return { ...state, tasks: toggled };
 
     case DELETE_TASK:

@@ -5,7 +5,10 @@ import Label from "../../components/Label/Label";
 import Button from "../../components/Button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addTask } from "../../redux";
+import { useState } from "react";
 
 const StyledHome = styled.div`
   background-color: #7a77ff;
@@ -45,6 +48,11 @@ const BackButton = styled(FontAwesomeIcon)`
 `;
 
 function CreateTask() {
+  const [input, setinput] = useState({
+    title: "",
+  });
+  const history = useHistory();
+  const dispatch = useDispatch();
   return (
     <StyledHome>
       <TaskHeader>
@@ -53,7 +61,7 @@ function CreateTask() {
             <BackButton icon={faChevronLeft} size="xl" color="white" />
           </Link>
 
-          <StyledSectionTitle>Add new tasks</StyledSectionTitle>
+          <StyledSectionTitle>Add new tasks {input.title} </StyledSectionTitle>
         </Container>
       </TaskHeader>
 
@@ -61,8 +69,19 @@ function CreateTask() {
         <Container>
           <FormGroup>
             <Label>TITLE</Label>
-            <Input placeholder="Title" />
-            <Button>Create New Task</Button>
+            <Input
+              placeholder="Title"
+              value={input.title}
+              onChange={(e) => setinput({ ...input, title: e.target.value })}
+            />
+            <Button
+              onClick={() => {
+                dispatch(addTask(input.title));
+                history.push("/");
+              }}
+            >
+              Create New Task
+            </Button>
           </FormGroup>
         </Container>
       </StyledTask>

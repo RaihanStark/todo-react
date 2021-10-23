@@ -1,9 +1,9 @@
 import { ADD_TASK, TOGGLE_TASK, DELETE_TASK } from "./taskTypes";
 
-export const addTask = (task) => {
+export const addTask = (title) => {
   return {
     type: ADD_TASK,
-    payload: task,
+    payload: title,
   };
 };
 
