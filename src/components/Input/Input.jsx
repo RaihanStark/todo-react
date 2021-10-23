@@ -1,16 +1,19 @@
 import styled from "styled-components";
 
 const StyledInput = styled.input`
-  background-color: #afadf2;
+  background-color: transparent;
   border: none;
-  padding: 0.75rem 1rem;
-  color: white;
-
-  border-radius: 0.5rem;
+  padding: 0.75rem 0;
+  color: black;
+  border-bottom: 1px solid gray;
+  font-size: 1rem;
+  &:focus-visible {
+    outline: none;
+  }
 `;
 
-function Input() {
-  return <StyledInput type="text" />;
+function Input({ placeholder }) {
+  return <StyledInput type="text" placeholder={placeholder} />;
 }
 
 export default Input;

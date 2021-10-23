@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled, { css } from "styled-components";
 import Card from "../Card/Card";
 import Checkbox from "../Checkbox/Checkbox";

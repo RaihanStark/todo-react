@@ -45,7 +45,7 @@ const taskReducer = (state = initialState, actions) => {
         ...state,
         tasks: [
           ...state.tasks.filter((task) => {
-            return task.id != actions.payload;
+            return task.id !== actions.payload;
           }),
         ],
       };
