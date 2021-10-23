@@ -3,6 +3,9 @@ import Container from "../../components/Container/Container";
 import Input from "../../components/Input/Input";
 import Label from "../../components/Label/Label";
 import Button from "../../components/Button/Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const StyledHome = styled.div`
   background-color: #7a77ff;
@@ -32,15 +35,26 @@ const FormGroup = styled.div`
   margin-top: 2rem;
 `;
 
-const TaskHeader = styled(Container)`
-  min-height: 7rem;
+const TaskHeader = styled.div`
+  /* min-height: 7rem; */
+  margin-top: 1.5rem;
+`;
+
+const BackButton = styled(FontAwesomeIcon)`
+  cursor: pointer;
 `;
 
 function CreateTask() {
   return (
     <StyledHome>
       <TaskHeader>
-        <StyledSectionTitle>Add new tasks</StyledSectionTitle>
+        <Container>
+          <Link to="/">
+            <BackButton icon={faChevronLeft} size="xl" color="white" />
+          </Link>
+
+          <StyledSectionTitle>Add new tasks</StyledSectionTitle>
+        </Container>
       </TaskHeader>
 
       <StyledTask>
