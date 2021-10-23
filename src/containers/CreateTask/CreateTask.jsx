@@ -61,7 +61,7 @@ function CreateTask() {
             <BackButton icon={faChevronLeft} size="xl" color="white" />
           </Link>
 
-          <StyledSectionTitle>Add new tasks {input.title} </StyledSectionTitle>
+          <StyledSectionTitle>Add new tasks</StyledSectionTitle>
         </Container>
       </TaskHeader>
 
